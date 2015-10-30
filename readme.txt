@@ -3,8 +3,8 @@ Contributors: codersantosh
 Donate link: http://codersantosh.com/
 Tags: customizer, theme customizer, theme option, theme mods
 Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 2.1
+Tested up to: 4.3.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,10 +91,13 @@ Don't know anything, no problem please visit [codersantosh.com](http://codersant
 2. Section, Setting, Control Examples
 
 == Changelog ==
+= 2.2 =
+Added a constant 'CODER_CUSTOMIZER_NAME'
+Remove filter 'coder_customizer_name'
 
 = 2.1 =
 Make compatible with type option of setting
-Added a constant ''
+Added a constant 'CODER_CUSTOMIZER_OPTION_MODE'
 
 = 2.0 =
 Major realeased

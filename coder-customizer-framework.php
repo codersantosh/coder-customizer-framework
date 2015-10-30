@@ -3,7 +3,7 @@
 Plugin Name: Coder Customizer Framework
 Plugin URI: http://codersantosh.com
 Description: Use WordPress Customizer in easy and standard way to your theme.
-Version: 2.1
+Version: 2.2
 Author: Santosh Kunwar (CoderSantosh)
 Author URI: http://codersantosh.com
 License: GPL
@@ -217,11 +217,11 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
         public function coder_customizer_init($coder_panels_sections_settings = array()) {
 
             /*Basic variables initialization with filter*/
-            if (defined('coder_customizer_theme') && coder_customizer_theme == 1 ) {
+            if (defined('CODER_CUSTOMIZER_THEME') && CODER_CUSTOMIZER_THEME == 1 ) {
                 $this->coder_customizer_framework_url = get_template_directory_uri().'/coder-customizer-framework/';
                 $this->coder_customizer_framework_path = get_template_directory().'/coder-customizer-framework/';
             }
-            elseif (defined('coder_customizer_child_theme') && coder_customizer_child_theme == 1) {
+            elseif (defined('CODER_CUSTOMIZER_CHILD_THEME') && CODER_CUSTOMIZER_CHILD_THEME == 1) {
                 $this->coder_customizer_framework_url = get_stylesheet_directory_uri().'/coder-customizer-framework/';
                 $this->coder_customizer_framework_path = get_stylesheet_directory().'/coder-customizer-framework/';
             }
@@ -236,7 +236,10 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
 //            add_action('init', array($this,'coder_load_textdomain') , 12);
 
             /*Basic variables initialization with filter*/
-            $this->coder_customizer_name = apply_filters( 'coder_customizer_name', $this->coder_customizer_name );
+            if(defined('CODER_CUSTOMIZER_NAME')){
+                $this->coder_customizer_name = CODER_CUSTOMIZER_NAME;
+            }
+
 
             $this->coder_basic_control_types = apply_filters( 'coder_basic_control_types', $this->coder_basic_control_types );
 
@@ -542,7 +545,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
                 $coder_default_sanitize_callback = 'esc_attr';
             }
             $coder_setting_type = 'theme_mod';
-            if (defined('coder_customizer_option_mode') && coder_customizer_option_mode == 1 ) {
+            if (defined('CODER_CUSTOMIZER_OPTION_MODE') && CODER_CUSTOMIZER_OPTION_MODE == 1 ) {
                 $coder_setting_type = 'option';
             }
             $coder_setting_default_values =
@@ -635,7 +638,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
             $coder_panels = apply_filters( 'coder_register_customize_panel', $this->coder_panels );
             $coder_sections = apply_filters( 'coder_register_customize_sections', $this->coder_sections );
             $coder_settings_controls = apply_filters( 'coder_register_customize_settings_controls', $this->coder_settings_controls );
-            $coder_customizer_name = apply_filters( 'coder_register_customizer_name', $this->coder_customizer_name );
+            $coder_customizer_name = $this->coder_customizer_name;
             $coder_basic_control_types = apply_filters( 'coder_register_customizer_basic_control_types', $this->coder_basic_control_types );
             $coder_remove_panels = apply_filters( 'coder_register_customize_remove_panel', $this->coder_remove_panels );
             $coder_remove_sections = apply_filters( 'coder_register_customize_remove_sections', $this->coder_remove_sections );
@@ -685,7 +688,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
             /*update option to save repeated values
             * @since 1.1
             */
-            if (defined('coder_customizer_option_mode') && coder_customizer_option_mode == 1 ) {
+            if (defined('CODER_CUSTOMIZER_OPTION_MODE') && CODER_CUSTOMIZER_OPTION_MODE == 1 ) {
                 $coder_customizer_values = get_option( $this->coder_customizer_name);
             }
             else{
@@ -693,7 +696,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
             }
             $coder_customizer_values['coder_repeated_settings_controls'] = serialize( $this->coder_repeated_settings_controls );
 
-            if (defined('coder_customizer_option_mode') && coder_customizer_option_mode == 1 ) {
+            if (defined('CODER_CUSTOMIZER_OPTION_MODE') && CODER_CUSTOMIZER_OPTION_MODE == 1 ) {
                 update_option( $this->coder_customizer_name, $coder_customizer_values );
             }
             else{
