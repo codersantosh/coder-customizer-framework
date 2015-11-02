@@ -436,6 +436,9 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
                             $coder_repeated_priority = $coder_repeated_priority++;
 
                         }
+                        if(isset($coder_setting_control['control']['label'])){
+                            $coder_setting_control['control']['label'] = sprintf($coder_setting_control['control']['label'], $i);
+                        }
                         $coder_setting_control['control']['priority'] = $coder_repeated_priority;
                         $coder_settings_control_id = $coder_settings_control_id.'_'.$i;
 
