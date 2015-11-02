@@ -7,11 +7,12 @@ if ( ! function_exists( 'coder_sanitize_checkbox' ) ) :
      * @since 1.1
      *
      * @param $coder_input
-     * @return int
+     * @return boolean
      *
      */
-    function coder_sanitize_checkbox ( $coder_input ) {
-        return ( ( isset( $coder_input ) && 1 == $coder_input ) ? 1 : 0 );
+    function coder_sanitize_checkbox( $checked ) {
+        // Boolean check.
+        return ( ( isset( $checked ) && true == $checked ) ? true : false );
     }
 
 endif;
