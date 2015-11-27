@@ -33,7 +33,7 @@ class Coder_Customize_Message_Control extends WP_Customize_Control {
         }
         ?>
         <div class="coder-customize-customize-message">
-            <?php echo $this->description; ?>
+            <?php echo wp_kses_post( $this->description ); ?>
         </div> <!-- .coder-customize-customize-message -->
         <?php
     }

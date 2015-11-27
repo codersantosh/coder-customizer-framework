@@ -536,7 +536,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
                 $coder_default_sanitize_callback = 'absint';
             }
             elseif( 'radio_image' == $coder_setting_control_type ){
-                $coder_default_sanitize_callback = 'esc_url_raw';
+                $coder_default_sanitize_callback = 'sanitize_text_field';
             }
             elseif( 'tags_dropdown' == $coder_setting_control_type ){
                 $coder_default_sanitize_callback = 'absint';

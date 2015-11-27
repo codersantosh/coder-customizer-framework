@@ -17,7 +17,7 @@ if ( ! function_exists( 'coder_add_setting_control_callback' ) ) :
      * @return void
      *
      */
-    function coder_add_setting_control_callback($coder_wp_customize, $coder_customizer_name, $coder_basic_control_types, $coder_setting_control_key, $coder_settings_control){
+    function coder_add_setting_control_callback( $coder_wp_customize, $coder_customizer_name, $coder_basic_control_types, $coder_setting_control_key, $coder_settings_control ){
         $coder_wp_customize->add_setting( esc_attr( $coder_customizer_name.'['.$coder_setting_control_key.']' ), $coder_settings_control['setting']);
 
         $coder_control_field_type = $coder_settings_control['control']['type'];
@@ -55,7 +55,7 @@ if ( ! function_exists( 'coder_add_setting_control_callback' ) ) :
             else {
                 ?>
                 <script>
-                    console.log('<?php echo  $coder_New_Customize_Custom_Control_class_name. "not found. Please create it."?>');
+                    console.log('<?php echo esc_attr( $coder_New_Customize_Custom_Control_class_name ). "not found. Please create it."?>');
                 </script>
             <?php
             }

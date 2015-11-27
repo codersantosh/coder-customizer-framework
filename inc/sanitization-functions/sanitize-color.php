@@ -15,7 +15,7 @@ if ( ! function_exists( 'coder_sanitize_hex_color' ) ) :
         $coder_hex_color = sanitize_hex_color( $coder_hex_color );
 
         // If $coder_hex_color is a valid hex value, return it; otherwise, return the default.
-        return ( ! null( $coder_hex_color ) ? $coder_hex_color : $coder_setting->default );
+        return ( null != $coder_hex_color ? $coder_hex_color : $coder_setting->default );
     }
 
 endif;

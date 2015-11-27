@@ -10,7 +10,7 @@ if ( ! function_exists( 'coder_get_customizer_single_value' ) ) :
      * @return array || other values
      *
      */
-    function coder_get_customizer_single_value ($coder_single_value_name){
+    function coder_get_customizer_single_value ( $coder_single_value_name ){
         $coder_customizer_values = coder_get_customizer_all_values();
         if(!isset($coder_customizer_values[$coder_single_value_name])){
             return null;
