@@ -13,6 +13,7 @@ Welcome coder, Use  WordPress Customizer in easy and standard way to your theme
 == Description ==
 
 Coder customizer framework allows theme developers to add customizer to their theme in easy, standard and advanced way.
+You can also found this plugin in [github](https://github.com/codersantosh/coder-customizer-framework)
 
 Available control types ( fields )
 
