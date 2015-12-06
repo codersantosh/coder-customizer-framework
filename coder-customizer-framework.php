@@ -3,10 +3,10 @@
 Plugin Name: Coder Customizer Framework
 Plugin URI: http://codersantosh.com
 Description: Use WordPress Customizer in easy and standard way to your theme.
-Version: 2.2
+Version: 2.3
 Author: Santosh Kunwar (CoderSantosh)
 Author URI: http://codersantosh.com
-License: GPL
+License: GPLv2 or later
 Copyright: Santosh Kunwar (CoderSantosh)
 */
 
@@ -34,7 +34,7 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
          * @since 1.0.0
          *
          */
-        private  $coder_customizer_framework_version = '1.0.0';
+        private  $coder_customizer_framework_version = '2.3';
 
         /**
          * Variable to hold this framework minimum wp version
@@ -232,9 +232,6 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
             $this->coder_customizer_framework_url = apply_filters( 'coder_customizer_framework_url', $this->coder_customizer_framework_url );
             $this->coder_customizer_framework_path = apply_filters( 'coder_customizer_framework_path', $this->coder_customizer_framework_path );
 
-            /*load translation*/
-//            add_action('init', array($this,'coder_load_textdomain') , 12);
-
             /*Basic variables initialization with filter*/
             if(defined('CODER_CUSTOMIZER_NAME')){
                 $this->coder_customizer_name = CODER_CUSTOMIZER_NAME;
@@ -335,21 +332,6 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
             if(!empty($coder_customizer_init)) {
                 $this->coder_customizer_init( $coder_customizer_init );
             }
-        }
-
-        /**
-         * Load_textdomain
-         *
-         * @access public
-         * @since 1.0.0
-         *
-         * @return void
-         *
-         */
-        public function coder_load_textdomain(){
-            /*Added filter for text domain path*/
-            $coder_customizer_framework_textdomain_path = apply_filters( 'coder_customizer_framework_textdomain_path', $this->coder_customizer_framework_path );
-            load_textdomain( 'coder-customizer-framework', $coder_customizer_framework_textdomain_path . '/languages/' . get_locale() .'.mo' );
         }
 
         /**
@@ -497,13 +479,13 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
                 $coder_setting_control['control']['type'] = 'number';
             }
             elseif( 'radio' == $coder_setting_control_type ){
-                $coder_default_sanitize_callback = 'sanitize_text_field';
+                $coder_default_sanitize_callback = 'coder_sanitize_select';
             }
             elseif( 'range' == $coder_setting_control_type ){
                 $coder_default_sanitize_callback = 'coder_sanitize_number_range';
             }
             elseif( 'select' == $coder_setting_control_type ){
-                $coder_default_sanitize_callback = 'sanitize_text_field';
+                $coder_default_sanitize_callback = 'coder_sanitize_select';
             }
             elseif( 'url' == $coder_setting_control_type ){
                 $coder_default_sanitize_callback = 'esc_url_raw';
@@ -604,22 +586,8 @@ if ( ! class_exists( 'Coder_Customizer_Framework' ) ){
         function coder_customize_controls_enqueue_scripts(){
             global $pagenow;
             if ( 'customize.php' == $pagenow ) {
-
                 wp_register_style( 'coder-customizer-framework-style', $this->coder_customizer_framework_url . '/assets/css/coder-customizer-framework.css', false, $this->coder_customizer_framework_version );
                 wp_enqueue_style( 'coder-customizer-framework-style' );
-
-                /*localizing the script start*/
-                /*Register the script*/
-                wp_register_script( 'coder-customizer-framework', $this->coder_customizer_framework_url . '/assets/js/coder-customizer-framework.js', array( 'jquery' ), $this->coder_customizer_framework_version, true );
-                wp_register_script( 'coder-customizer-framework', $this->coder_customizer_framework_url . '/assets/js/coder-customizer-framework.js', array( 'jquery' ), $this->coder_customizer_framework_version, true );
-                /*Localize the script with new data*/
-                $coder_customizer_localization_array = array(
-                    'coder_customizer_framework_url' => $this->coder_customizer_framework_url
-                );
-                wp_localize_script( 'coder-customizer-framework', 'coder_customizer_framework', $coder_customizer_localization_array );
-                /*enqueue script with localized data.*/
-                wp_enqueue_script( 'coder-customizer-framework' );
-                /*localizing the script end*/
             }
         }
 
