@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Coder Customizer Framework
-Plugin URI: http://codersantosh.com
+Plugin URI: http://codersantosh.com/coder-customizer-framework/
 Description: Use WordPress Customizer in easy and standard way to your theme.
 Version: 2.3
 Author: Santosh Kunwar (CoderSantosh)
