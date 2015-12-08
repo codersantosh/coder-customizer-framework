@@ -1,9 +1,9 @@
 === Coder Customizer Framework ===
-Contributors: codersantosh
+Contributors: codersantosh, kafleg
 Donate link: http://codersantosh.com/
 Tags: customizer, theme customizer, theme option, theme mods
 Requires at least: 4.0
-Tested up to: 4.3.1
+Tested up to: 4.4
 Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
